@@ -15,11 +15,14 @@ Including another URLconf
 """
 ## 4-parte instalar o biblioteca mais urls do aplicativo
 from django.contrib import admin
-from django.urls import path
-from core.views import frontpage, about
+from django.urls import path, include
+
+from core.views import frontpage, about, contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', about, name='about'),
+    path('contact/', contact, name='contact'),
+    path('', include('blog.urls')),
     path('', frontpage, name='frontpage'),
 ]

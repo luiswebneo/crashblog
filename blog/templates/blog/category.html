@@ -1,6 +1,6 @@
 <!--3- parte criar o arquivo templates para começar com html-->
 {% extends 'core/base.html' %}
-{% block title %}Home | {% endblock %}
+{% block title %}{{ category.title }} | {% endblock %}
 
 {% block content %}
 <section class="hero">
@@ -17,6 +17,10 @@
                                     <p>{{ post.intro}}</p>
                                 </a>
                             </div>
+                        {% empty%}
+                        <div class="content">
+                            <p>There is no posts in this category...</p>
+                        </div>
                         {% endfor %}    
                     </div>
                 </div>

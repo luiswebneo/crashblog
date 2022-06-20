@@ -36,6 +36,7 @@
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
                     <div class="navbar-item">
+                        <form method="get" action="{% url 'search' %}">
                             <div class="control has-icons-left">
                                 <input class="input is-rounded" name="query" type="text" placeholder="Search">
                                 <span class="icon is-left">
@@ -51,7 +52,7 @@
                     <a href="{% url 'about' %}" class="navbar-item is-size-5 has-text-weight-semibold">
                         About
                     </a>
-                    <a href="{% url 'about' %}" class="navbar-item is-size-5 has-text-weight-semibold">
+                    <a href="{% url 'contact' %}" class="navbar-item is-size-5 has-text-weight-semibold">
                         Contact
                     </a>
                 </div>
