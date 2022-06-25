@@ -10,14 +10,19 @@
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
                         {% for post in posts %}
-                            <div class="content is-medium">
-                                <a href="{% url 'post_detail' post.category.slug post.slug %}">
-                                    <h2 class="subtitle is-4">{{ post.created_at|date:'M-d-Y H:i' }}</h2>
-                                    <h1 class="title">{{ post.title }}</h1>
-                                    <p>{{ post.intro}}</p>
-                                </a>
-                            </div>
-                        {% endfor %}    
+                        <div class="content is-medium">
+                            <a href="{% url 'post_detail' post.category.slug post.slug %}">
+                                {% if post.image %}
+                                <figure class="image">
+                                    <img src="{{ post.image.url }}">
+                                </figure>
+                                {% endif %}
+                                <h2 class="subtitle is-4">{{ post.created_at|date:'M-d-Y H:i' }}</h2>
+                                <h1 class="title">{{ post.title }}</h1>
+                                <p>{{ post.intro}}</p>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </section>

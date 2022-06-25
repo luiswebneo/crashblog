@@ -12,3 +12,10 @@ def about(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
+
+def robost_txt(request):
+    text = [
+        "User-Agent: *",
+        "Disallow: /admin/",
+    ]
+    return HttpResponse("\n".join(text), context_type="text/plain")

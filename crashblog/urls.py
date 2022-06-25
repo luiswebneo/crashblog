@@ -14,15 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 ## 4-parte instalar o biblioteca mais urls do aplicativo
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 from django.contrib import admin
 from django.urls import path, include
 
+from .sitemaps import CategorySitemap, PostSitemap
+
 from core.views import frontpage, about, contact
 
+sitemaps = {'category': CategorySitemap, 'post': PostSitemap}
+
+
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('admin/', admin.site.urls),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
     path('', include('blog.urls')),
     path('', frontpage, name='frontpage'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
